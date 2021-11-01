@@ -24,7 +24,7 @@ def get_id(obiect):
     :param obiect: list #  Dict
     :return: id - string
     """
-    # return obiect["id"]
+    #  return obiect["id"]
     return obiect[0]
 
 
@@ -64,7 +64,7 @@ def get_locatie(obiect):
     :param obiect:  list #  Dict
     :return: locatie - string
     """
-    #return obiect["locatie"]
+    #  return obiect["locatie"]
     return obiect[4]
 
 
@@ -75,7 +75,7 @@ def set_id(obiect, id):
     :param id: string
     :return:
     """
-    #obiect["id"] = id
+    #  obiect["id"] = id
     obiect[0] = id
 
 
@@ -86,7 +86,7 @@ def set_nume(obiect, nume):
     :param nume: string
     :return:
     """
-    #obiect["nume"] = nume
+    #  obiect["nume"] = nume
     obiect[1] = nume
 
 
@@ -97,7 +97,7 @@ def set_descriere(obiect, descriere):
     :param descriere: string
     :return:
     """
-    #obiect["descriere"] = descriere
+    #  obiect["descriere"] = descriere
     obiect[2] = descriere
 
 
@@ -108,7 +108,7 @@ def set_pret_achizitie(obiect, pret_achizitie):
     :param pret_achizitie: float
     :return:
     """
-    #obiect["pret_achizitie"] = pret_achizitie
+    #  obiect["pret_achizitie"] = pret_achizitie
     obiect[3] = pret_achizitie
 
 
@@ -119,7 +119,7 @@ def set_locatie(obiect, locatie):
     :param locatie: string
     :return:
     """
-    #obiect["locatie"] = locatie
+    #  obiect["locatie"] = locatie
     obiect[4] = locatie
 
 

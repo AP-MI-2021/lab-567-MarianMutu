@@ -18,7 +18,7 @@ def test_edit_obiect():
     obiecte = [o1, o2]
     assert len(obiecte) == 2
     obiect = edit_obiect(obiecte, '128A93', 'Carte_new', 'biblioteca_new', 13.49, 'bibl')
-    o1_new = find_obiect(obiect, '128A93')
+    o1_new = read(obiect, '128A93')
     assert get_id(o1_new) == '128A93'
     assert get_nume(o1_new) == 'Carte_new'
     assert get_descriere(o1_new) == 'biblioteca_new'
