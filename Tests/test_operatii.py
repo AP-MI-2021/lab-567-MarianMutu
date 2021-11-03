@@ -1,6 +1,6 @@
 from Domain.obiect import create_obiect, get_locatie, get_descriere
 from Logic.operatii import move_obiect_from_one_location_to_another, \
-    add_string_from_price
+    add_string_by_price
 
 
 def test_move_obiect_from_one_location_to_another():
@@ -23,11 +23,17 @@ def test_add_string_from_price():
     o2 = create_obiect("129", "Carte", "biblioteca", 14.89, "dejj")
     o3 = create_obiect("124", "culegere", "de matematica", 14.99, "cluj")
     lst_obiecte = [o1, o2, o3]
-    lst_obiecte = add_string_from_price(lst_obiecte, 67.89, " - altex")
+    lst_obiecte = add_string_by_price(lst_obiecte, 67.89, " - altex")
     assert get_descriere(o1) == "electronice - altex"
     assert get_descriere(o2) == "biblioteca"
     assert get_descriere(o3) == "de matematica"
-    lst_obiecte = add_string_from_price(lst_obiecte, 5.50, " - consumabile")
+    lst_obiecte = add_string_by_price(lst_obiecte, 5.50, " - consumabile")
     assert get_descriere(o1) == "electronice - altex - consumabile"
     assert get_descriere(o2) == "biblioteca - consumabile"
     assert get_descriere(o3) == "de matematica - consumabile"
+    lst_obiecte = add_string_by_price(lst_obiecte, 55500, " - consumabile")
+    assert get_descriere(o1) == "electronice - altex - consumabile"
+    assert get_descriere(o2) == "biblioteca - consumabile"
+    assert get_descriere(o3) == "de matematica - consumabile"
+
+

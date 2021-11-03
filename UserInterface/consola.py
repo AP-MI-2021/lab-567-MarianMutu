@@ -1,6 +1,6 @@
 from Domain.obiect import to_str
 from Logic.crud import add_obiect, edit_obiect, delete_obiect
-from Logic.operatii import move_obiect_from_one_location_to_another, add_string_from_price
+from Logic.operatii import move_obiect_from_one_location_to_another, add_string_by_price
 
 
 def print_menu():
@@ -36,23 +36,25 @@ def print_operatii_menu():
     a. Afisarea tuturor obiectelor
     6. Inapoi
     """)
-def handle_add_obiect(lst_obiecte):
-        """
-        Adaugare obiect citit de la tastatura
-        :param lst_obiecte: lista de obiecte
-        :return:
-        """
-        try:
-            id = input("Introduceti ID-ul obiectului: ")
-            nume = input("Introduceti numele obiectului: ")
-            descriere = input("Introduceti descrierea obiectului: ")
-            pret_achizitie = float(input("Introduceti pretul de achizitie: "))
-            locatie = input("Introduceti locatia: ")
-            return add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie)
-        except ValueError as ve:
-            print("Eroare: ", ve)
 
-        return lst_obiecte
+
+def handle_add_obiect(lst_obiecte):
+    """
+    Adaugare obiect citit de la tastatura
+    :param lst_obiecte: lista de obiecte
+    :return:
+    """
+    try:
+        id = input("Introduceti ID-ul obiectului: ")
+        nume = input("Introduceti numele obiectului: ")
+        descriere = input("Introduceti descrierea obiectului: ")
+        pret_achizitie = float(input("Introduceti pretul de achizitie: "))
+        locatie = input("Introduceti locatia: ")
+        return add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie)
+    except ValueError as ve:
+        print("Eroare: ", ve)
+    return lst_obiecte
+
 
 def handle_show_all(lst_obiecte):
     """
@@ -64,6 +66,7 @@ def handle_show_all(lst_obiecte):
         print(to_str(obiect))
     if len(lst_obiecte) == 0:
         print("Nu exista nici un element introdus!")
+
 
 def handle_edit_obiect(lst_obiecte):
     """
@@ -90,7 +93,7 @@ def handle_delete_obiect(lst_obiecte):
     :return: lista de obiecte fara obiectul sters
     """
     try:
-        id = input("Introduceti ID-ul obiectului pe care doriti sa-l sterheti:")
+        id = input("Introduceti ID-ul obiectului pe care doriti sa-l stergeti:")
         obiecte = delete_obiect(lst_obiecte, id)
         print("Obiect sters cu succes!")
         return obiecte
@@ -159,8 +162,7 @@ def run_operatii_ui(lst_obiecte):
         try:
             val = float(input("Introduceti o valoare dupa care doriti sa comparatati pretul obiectelor: "))
             string = input("Introduceti un string pe care doriti sa-l adaugati la descrierea obiectelor: ")
-            lst_obiecte = add_string_from_price(lst_obiecte, val, string)
-            return lst_obiecte
+            return add_string_by_price(lst_obiecte, val, string)
         except ValueError as ve:
             print("Eroare: ", ve)
 

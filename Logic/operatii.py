@@ -15,11 +15,11 @@ def move_obiect_from_one_location_to_another(lst_obiecte, locatie_veche, locatie
     return lst_obiecte
 
 
-def add_string_from_price(lst_obiecte, val, string):
+def add_string_by_price(lst_obiecte, val, string):
     """
     adauga la un obiect cu pretul mai mare decat "val" un string citit de la tastatura
     :param lst_obiecte: lista de obiecte
-    :param vak: valoarea cu care se compara
+    :param val: valoarea cu care se compara
     :param string: string-ul citit de la tastatura
     :return:
     """
@@ -28,3 +28,4 @@ def add_string_from_price(lst_obiecte, val, string):
             descriere_new = get_descriere(obiect) + string
             set_descriere(obiect, descriere_new)
     return lst_obiecte
+

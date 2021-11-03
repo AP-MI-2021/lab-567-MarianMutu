@@ -13,8 +13,19 @@ def add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie):
     :param locatie: string
     :return: 
     """
+    error = []
+    if len(id) == 0:
+        error.append("ID-ul nu poate fi vid!")
+    if len(nume) == 0:
+        error.append("Numele obiectului nu poate fi vid!")
+    if len(descriere) == 0:
+        error.append("Descrierea obiectului nu poate fi vid!")
+    if len(locatie) != 4:
+        error.append("Locatia obiectului trebuie sa aibe exact 4 caractere!")
     if read(lst_obiecte, id) is not None:
-        raise ValueError(f'Exista deja o prajitura cu id-ul {id}')
+        error.append(f"Exista deja un obiect cu id-ul {id}!")
+    if len(error) != 0:
+        raise ValueError(f'{error}')
     obiect = create_obiect(id, nume, descriere, pret_achizitie, locatie)
     return lst_obiecte + [obiect]
 

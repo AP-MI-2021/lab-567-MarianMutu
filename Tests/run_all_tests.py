@@ -1,7 +1,6 @@
 from Tests.domain_tests import obiect_test
 from Tests.test_crud import *
-from Tests.test_operatii import test_move_obiect_from_one_location_to_another, \
-    test_add_string_from_price
+from Tests.test_operatii import *
 
 
 def run_all_tests():
