@@ -10,3 +10,6 @@ def run_all_tests():
     test_delete_obiect()
     test_move_obiect_from_one_location_to_another()
     test_add_string_from_price()
+    test_biggest_price_for_each_location()
+    test_ordered_items_ascending_by_price()
+    test_sum_of_prices_for_each_locations()

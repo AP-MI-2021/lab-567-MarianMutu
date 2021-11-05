@@ -7,6 +7,7 @@ def create_obiect(id, nume, descriere, pret_achizitie, locatie):
     :param pret_achizitie: float
     :param locatie: string (exact 4 caractere)
     :return: List  #Dict
+    :return: un obiect
     """
     #  return {
     #  "id": id,

@@ -2,7 +2,7 @@ from copy import deepcopy
 from Domain.obiect import *
 
 
-def add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie):
+def add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie,  undo_list: list, redo_list: list):
     """
     Adaugam in memorie, un obiect format din campurile: id, nume, descriere, pret_achizitie, locatie
     :param lst_obiecte: lista de obiecte
@@ -11,6 +11,8 @@ def add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie):
     :param descriere: string
     :param pret_achizitie: string
     :param locatie: string
+    :param undo_list: lista de undo
+    :param redo_list: lista de redo
     :return: 
     """
     error = []
@@ -26,6 +28,9 @@ def add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie):
         error.append(f"Exista deja un obiect cu id-ul {id}!")
     if len(error) != 0:
         raise ValueError(f'{error}')
+
+    undo_list.append(lst_obiecte)
+    redo_list.clear()
     obiect = create_obiect(id, nume, descriere, pret_achizitie, locatie)
     return lst_obiecte + [obiect]
 
@@ -54,10 +59,13 @@ def read(lst_obiecte, id_obiect):
     return None
 
 
-def edit_obiect(obiecte, id, nume_new, descriere_new, pret_achizitie_new, locatie_new):
+def edit_obiect(lst_obiecte, id, nume_new, descriere_new, pret_achizitie_new, locatie_new,
+                undo_list: list, redo_list: list):
     """
     modificarea obiectului dupa ID si aruncarea unei erori ValueError daca au fost introduse date gresite
-    :param obiecte: lista de obiecte
+    :param redo_list: lista de redo
+    :param undo_list: lista de undo
+    :param lst_obiecte: lista de obiecte
     :param id: string
     :param nume_new: string
     :param descriere_new: string
@@ -65,25 +73,32 @@ def edit_obiect(obiecte, id, nume_new, descriere_new, pret_achizitie_new, locati
     :param locatie_new: string
     :return:
     """
-    updated_list = deepcopy(obiecte)
+    updated_list = deepcopy(lst_obiecte)
     for obiect in updated_list:
         if get_id(obiect) == id:
             set_nume(obiect, nume_new)
             set_descriere(obiect, descriere_new)
             set_pret_achizitie(obiect, pret_achizitie_new)
             set_locatie(obiect, locatie_new)
+    undo_list.append(lst_obiecte)
+    redo_list.clear()
     return updated_list
 
 
-def delete_obiect(obiecte, id):
+def delete_obiect(lst_obiecte, id, undo_list: list, redo_list: list):
     """
     sterge obiectul din lista 'obiecte' care are id-ul ID
-    :param obiecte: lista de obiecte
+    :param undo_list: lista de undo
+    :param redo_list: lista de redo
+    :param lst_obiecte: lista de obiecte
     :param id: string
     :return:
     """
-    if read(obiecte, id) is None:
+    if read(lst_obiecte, id) is None:
         raise ValueError(f'Nu xista un obiect cu ID-ul {id} pe care sa il stergem!')
 
-    result_list = [obiect for obiect in obiecte if get_id(obiect) != id]
+    result_list = [obiect for obiect in lst_obiecte if get_id(obiect) != id]
+
+    undo_list.append(lst_obiecte)
+    redo_list.clear()
     return result_list

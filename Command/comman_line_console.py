@@ -3,13 +3,15 @@ from Logic.crud import delete_obiect, add_obiect
 
 
 def show_menu():
+    print()
     print('Adaugare: add [id] [nume] [descrierea] [pret_achizitie] [locatie]')
     print('Afisare: showall')
     print('Stergere: delete [id]')
-    print()
     print('Meniu: help')
     print('Iesire: exit')
+    print('Inapoi: back')
     print('*Nota: mai multe comenzi adaugate pe acelasi rand necesita despartirea prin ";"!')
+    print()
 
 
 def run_add(lst_obiecte, id_introdus, nume_introdus, descriere_introdusa, pret_introdus, locatie_introdusa):
@@ -69,11 +71,13 @@ def line_console(lst_obiecte):
                 except ValueError as ve:
                     print("Eroare: ", ve)
             elif com[0] == "delete":
-                lst_obiecte = run_delete(str(com[1]), lst_obiecte)
+                lst_obiecte = run_delete(com[1], lst_obiecte)
             elif com[0] == "help":
                 show_menu()
             elif com[0] == "showall":
                 run_show_all(lst_obiecte)
+            elif com[0] == "back":
+                break
             elif com[0] == "exit":
                 break
             else:

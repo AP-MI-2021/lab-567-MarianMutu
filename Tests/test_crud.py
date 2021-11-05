@@ -3,7 +3,9 @@ from Logic.crud import *
 
 def test_add_obiect():
     obiecte = []
-    obiecte = add_obiect(obiecte, '128A93', 'stilou', 'rechizite', 2.99, 'Vivo')
+    undo_list = []
+    redo_list = []
+    obiecte = add_obiect(obiecte, '128A93', 'stilou', 'rechizite', 2.99, 'Vivo', undo_list, redo_list)
     assert len(obiecte) == 1
     assert get_id(obiecte[0]) == '128A93'
     assert get_nume(obiecte[0]) == 'stilou'
@@ -13,11 +15,13 @@ def test_add_obiect():
 
 
 def test_edit_obiect():
+    undo_list = []
+    redo_list = []
     o1 = create_obiect('128A93', 'Calculator', 'electronice', 4999.90, 'secr')
     o2 = create_obiect('12W889', 'Carte', 'biblioteca', 14.89, 'CLuj')
     obiecte = [o1, o2]
     assert len(obiecte) == 2
-    obiect = edit_obiect(obiecte, '128A93', 'Carte_new', 'biblioteca_new', 13.49, 'bibl')
+    obiect = edit_obiect(obiecte, '128A93', 'Carte_new', 'biblioteca_new', 13.49, 'bibl', undo_list, redo_list)
     o1_new = read(obiect, '128A93')
     assert get_id(o1_new) == '128A93'
     assert get_nume(o1_new) == 'Carte_new'
@@ -27,17 +31,14 @@ def test_edit_obiect():
 
 
 def test_delete_obiect():
+    undo_list = []
+    redo_list = []
     o1 = create_obiect('128A93', 'Calculator', 'electronice', 4999.90, 'secr')
     o2 = create_obiect('12W889', 'Carte', 'biblioteca', 14.89, 'CLuj')
     obiecte = [o1, o2]
     assert len(obiecte) == 2
-    obiecte = delete_obiect(obiecte, '128A93')
+    obiecte = delete_obiect(obiecte, '128A93', undo_list, redo_list)
     assert len(obiecte) == 1
-    obiecte = delete_obiect(obiecte, '12W889')
+    obiecte = delete_obiect(obiecte, '12W889', undo_list, redo_list)
     assert len(obiecte) == 0
-
-
-
-
-
 
