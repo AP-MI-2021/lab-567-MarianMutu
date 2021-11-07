@@ -1,7 +1,10 @@
+from copy import deepcopy
+
 from Domain.obiect import *
 
 
-def move_obiect_from_one_location_to_another(lst_obiecte, locatie_veche, locatie_noua, undo_list: list, redo_list: list):
+def move_obiect_from_one_location_to_another(lst_obiecte, locatie_veche, locatie_noua,
+                                             undo_list: list, redo_list: list):
     """
     muta toate obiectele din locatia "locatie_veche" in "locatie_noua"
     :param undo_list: lista de undo
@@ -11,11 +14,12 @@ def move_obiect_from_one_location_to_another(lst_obiecte, locatie_veche, locatie
     :param locatie_noua: string
     :return: lista de obiecte modificata
     """
+    lst_obiecte_copie = deepcopy(lst_obiecte)
     for obiect in lst_obiecte:
         if get_locatie(obiect) == locatie_veche:
             set_locatie(obiect, locatie_noua)
 
-    undo_list.append(lst_obiecte)
+    undo_list.append(lst_obiecte_copie)
     redo_list.clear()
     return lst_obiecte
 
@@ -30,12 +34,13 @@ def add_string_by_price(lst_obiecte, val, string, undo_list: list, redo_list: li
     :param string: string-ul citit de la tastatura
     :return: lista de obiecte modificata
     """
+    lst_obiecte_copie = deepcopy(lst_obiecte)
     for obiect in lst_obiecte:
         if get_pret_achizitie(obiect) > float(val):
             descriere_new = get_descriere(obiect) + string
             set_descriere(obiect, descriere_new)
 
-    undo_list.append(lst_obiecte)
+    undo_list.append(lst_obiecte_copie)
     redo_list.clear()
     return lst_obiecte
 

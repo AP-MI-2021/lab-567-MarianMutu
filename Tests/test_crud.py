@@ -41,4 +41,3 @@ def test_delete_obiect():
     assert len(obiecte) == 1
     obiecte = delete_obiect(obiecte, '12W889', undo_list, redo_list)
     assert len(obiecte) == 0
-

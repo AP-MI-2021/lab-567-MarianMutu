@@ -1,6 +1,6 @@
-from Command.comman_line_console import line_console
 from Logic.crud import add_obiect
 from Tests.run_all_tests import run_all_tests
+from UserInterface.command_line_console import line_console
 from UserInterface.consola import run_console
 
 
@@ -19,7 +19,7 @@ def main():
         if menu == "basic":
             run_console(lst_obiecte, undo_list, redo_list)
         elif menu == "command":
-            line_console(lst_obiecte)
+            line_console(lst_obiecte, undo_list, redo_list)
         elif menu == 'cancel':
             break
         else:

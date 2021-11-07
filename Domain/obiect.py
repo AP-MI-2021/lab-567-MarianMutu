@@ -1,7 +1,7 @@
-def create_obiect(id, nume, descriere, pret_achizitie, locatie):
+def create_obiect(id_obiect, nume, descriere, pret_achizitie, locatie):
     """
 
-    :param id: string
+    :param id_obiect: string
     :param nume: string
     :param descriere: string
     :param pret_achizitie: float
@@ -16,7 +16,7 @@ def create_obiect(id, nume, descriere, pret_achizitie, locatie):
     #  "pret_achizitie": pret_achizitie,
     #  "locatie": locatie,
 #  }
-    return [id, nume, descriere, pret_achizitie, locatie]
+    return [id_obiect, nume, descriere, pret_achizitie, locatie]
 
 
 def get_id(obiect):
@@ -69,15 +69,15 @@ def get_locatie(obiect):
     return obiect[4]
 
 
-def set_id(obiect, id):
+def set_id(obiect, id_obiect):
     """
     Setarea id la obiect
     :param obiect:  list #  Dict
-    :param id: string
+    :param id_obiect: string
     :return:
     """
     #  obiect["id"] = id
-    obiect[0] = id
+    obiect[0] = id_obiect
 
 
 def set_nume(obiect, nume):

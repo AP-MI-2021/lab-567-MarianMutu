@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f114ffdd-2faa-4783-a210-003248ad95f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Logic/undo_redo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserInterface/command_line_console.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Command/comman_line_console.py" beforeDir="false" afterPath="$PROJECT_DIR$/Command/comman_line_console.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_undo_redo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Command/comman_line_console.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/obiect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obiect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic/crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/crud.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logic/operatii.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/operatii.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logic/undo_redo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic/undo_redo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/run_all_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/run_all_tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/test_crud.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_crud.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/test_operatii.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_operatii.py" afterDir="false" />
@@ -71,6 +73,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="command_line_console" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="lab-567-MarianMutu" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UserInterface" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UserInterface/command_line_console.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="lab-567-MarianMutu" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,9 +117,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="matei" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="lab-567-MarianMutu" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/matei.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.matei" />
+        <item itemvalue="Python.command_line_console" />
         <item itemvalue="Python.comman_line_console" />
       </list>
     </recent_temporary>
@@ -115,7 +163,14 @@
       <workItem from="1635916279038" duration="7938000" />
       <workItem from="1636032815146" duration="9864000" />
       <workItem from="1636053210379" duration="2087000" />
-      <workItem from="1636097117449" duration="5010000" />
+      <workItem from="1636097117449" duration="6926000" />
+      <workItem from="1636114031090" duration="684000" />
+      <workItem from="1636114723974" duration="3686000" />
+      <workItem from="1636123603601" duration="4050000" />
+      <workItem from="1636190052237" duration="8559000" />
+      <workItem from="1636204470231" duration="1994000" />
+      <workItem from="1636217045302" duration="600000" />
+      <workItem from="1636228127221" duration="65000" />
     </task>
     <servers />
   </component>
@@ -147,6 +202,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lab_567_MarianMutu$comman_line_console.coverage" NAME="comman_line_console Coverage Results" MODIFIED="1635921876118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Command" />
-    <SUITE FILE_PATH="coverage/lab_567_MarianMutu$main.coverage" NAME="main Coverage Results" MODIFIED="1636101499505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab_567_MarianMutu$matei.coverage" NAME="matei Coverage Results" MODIFIED="1636125279118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab_567_MarianMutu$command_line_console.coverage" NAME="command_line_console Coverage Results" MODIFIED="1636116342370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/UserInterface" />
+    <SUITE FILE_PATH="coverage/lab_567_MarianMutu$main.coverage" NAME="main Coverage Results" MODIFIED="1636217416603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

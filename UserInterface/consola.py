@@ -51,12 +51,12 @@ def handle_add_obiect(lst_obiecte, undo_list, redo_list):
     :return:
     """
     try:
-        id = input("Introduceti ID-ul obiectului: ")
+        id_obiect = input("Introduceti ID-ul obiectului: ")
         nume = input("Introduceti numele obiectului: ")
         descriere = input("Introduceti descrierea obiectului: ")
         pret_achizitie = float(input("Introduceti pretul de achizitie: "))
         locatie = input("Introduceti locatia: ")
-        return add_obiect(lst_obiecte, id, nume, descriere, pret_achizitie, locatie, undo_list, redo_list)
+        return add_obiect(lst_obiecte, id_obiect, nume, descriere, pret_achizitie, locatie, undo_list, redo_list)
     except ValueError as ve:
         print("Eroare: ", ve)
     return lst_obiecte
@@ -104,8 +104,8 @@ def handle_delete_obiect(lst_obiecte, undo_list, redo_list):
     :return: lista de obiecte fara obiectul sters
     """
     try:
-        id = input("Introduceti ID-ul obiectului pe care doriti sa-l stergeti:")
-        obiecte = delete_obiect(lst_obiecte, id, undo_list, redo_list)
+        id_introdus = input("Introduceti ID-ul obiectului pe care doriti sa-l stergeti:")
+        obiecte = delete_obiect(lst_obiecte, id_introdus, undo_list, redo_list)
         print("Obiect sters cu succes!")
         return obiecte
     except ValueError as ve:
@@ -140,20 +140,40 @@ def run_crud_ui(lst_obiecte, undo_list, redo_list):
     return lst_obiecte
 
 
-def handle_undo(lst_obiecte, undo_list, redo_list):
-    undo_result = do_undo(undo_list, redo_list, lst_obiecte)
-    if undo_result is not None:
-        return undo_result
+def handle_move_obiect_from_locatie(obiecte, undo: list, redo: list):
+    """
+    muta un obiect dintr-o locatie in alta
+    :param redo: lista de redo
+    :param undo: lista de undo
+    :param obiecte:
+    :return:
+    """
+    locatie_veche = input("Introduceti o locatie din care doriti sa mutati obiecte: ")
+    locatie_noua = input("Introduceti noua locatie: ")
+    if len(locatie_noua) == len(locatie_veche) == 4:
+        obiecte = move_obiect_from_one_location_to_another(obiecte, locatie_veche,
+                                                           locatie_noua, undo, redo)
+        print("Obiect mutat cu succes!")
+        return obiecte
     else:
-        return lst_obiecte
+        print("Nu ati introdus locatii valide!")
 
 
-def handle_redo(lst_obiecte, undo_list, redo_list):
-    redo_result = do_redo(undo_list, redo_list, lst_obiecte)
-    if redo_result is not None:
-        return redo_result
-    else:
-        return lst_obiecte
+def handle_add_string_from_price(lista_obiecte, undo_lst, redo_lst):
+    """
+    adauga la locatia unui obiect un string citit de la tastatura daca
+    pretul este mai mare decat o valoare citita de la tastatura
+    :param redo_lst: lista de redo
+    :param undo_lst: lista de undo
+    :param lista_obiecte:
+    :return:
+     """
+    try:
+        val = float(input("Introduceti o valoare dupa care doriti sa comparatati pretul obiectelor: "))
+        string = input("Introduceti un string pe care doriti sa-l adaugati la descrierea obiectelor: ")
+        return add_string_by_price(lista_obiecte, val, string, undo_lst, redo_lst)
+    except ValueError as ve:
+        print("Eroare: ", ve)
 
 
 def run_operatii_ui(lst_obiecte, undo_list, redo_list):
@@ -164,39 +184,6 @@ def run_operatii_ui(lst_obiecte, undo_list, redo_list):
     :param lst_obiecte: lista de obiecte
     :return:
     """
-    def handle_move_obiect_from_locatie(lst_obiecte, undo_list, redo_list):
-        """
-        muta un obiect dintr-o locatie in alta
-        :param redo_list: lista de redo
-    :param undo_list: lista de undo
-        :param lst_obiecte:
-        :return:
-        """
-        locatie_veche = input("Introduceti o locatie din care doriti sa mutati obiecte: ")
-        locatie_noua = input("Introduceti noua locatie: ")
-        if len(locatie_noua) == len(locatie_veche) == 4:
-            lst_obiecte = move_obiect_from_one_location_to_another(lst_obiecte, locatie_veche,
-                                                                   locatie_noua, undo_list, redo_list)
-            print("Obiect mutat cu succes!")
-            return lst_obiecte
-        else:
-            print("Nu ati introdus locatii valide!")
-
-    def handle_add_string_from_price(lst_obiecte, undo_list, redo_list):
-        """
-        adauga la locatia unui obiect un string citit de la tastatura daca
-        pretul este mai mare decat o valoare citita de la tastatura
-        :param redo_list: lista de redo
-        :param undo_list: lista de undo
-        :param lst_obiecte:
-        :return:
-        """
-        try:
-            val = float(input("Introduceti o valoare dupa care doriti sa comparatati pretul obiectelor: "))
-            string = input("Introduceti un string pe care doriti sa-l adaugati la descrierea obiectelor: ")
-            return add_string_by_price(lst_obiecte, val, string, undo_list, redo_list)
-        except ValueError as ve:
-            print("Eroare: ", ve)
 
     while True:
         print_operatii_menu()
@@ -218,6 +205,36 @@ def run_operatii_ui(lst_obiecte, undo_list, redo_list):
         else:
             print("Comanda invalida!")
     return lst_obiecte
+
+
+def handle_undo(lst_obiecte, undo_list, redo_list):
+    """
+    validari undo
+    :param lst_obiecte: lista de obiecte
+    :param undo_list: lista de undo
+    :param redo_list: lista de redo
+    :return: lista de obiecte daca lista de undo e None, altfel returneaza lista de undo
+    """
+    undo_result = do_undo(undo_list, redo_list, lst_obiecte)
+    if undo_result is not None:
+        return undo_result
+    else:
+        return lst_obiecte
+
+
+def handle_redo(lst_obiecte, undo_list, redo_list):
+    """
+    validari redo
+    :param lst_obiecte: lista de obiecte
+    :param undo_list: lista de undo
+    :param redo_list: lista de redo
+    :return: lista de obiecte daca lista de redo e None, altfel returneaza lista de redo
+    """
+    redo_result = do_redo(undo_list, redo_list, lst_obiecte)
+    if redo_result is not None:
+        return redo_result
+    else:
+        return lst_obiecte
 
 
 def run_console(lst_obiecte, undo_list, redo_list):

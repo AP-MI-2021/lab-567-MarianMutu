@@ -12,7 +12,7 @@ def test_move_obiect_from_one_location_to_another():
     assert get_locatie(o1) == "bist"
     assert get_locatie(o2) == "dejj"
     assert get_locatie(o3) == "bist"
-    lst_obiecte = move_obiect_from_one_location_to_another(lst_obiecte, "bist", "memo", undo_list, redo_list)
+    move_obiect_from_one_location_to_another(lst_obiecte, "bist", "memo", undo_list, redo_list)
     assert get_locatie(o1) == "memo"
     assert get_locatie(o2) == "dejj"
     assert get_locatie(o3) == "memo"
@@ -33,7 +33,7 @@ def test_add_string_from_price():
     assert get_descriere(o1) == "electronice - altex - consumabile"
     assert get_descriere(o2) == "biblioteca - consumabile"
     assert get_descriere(o3) == "de matematica - consumabile"
-    lst_obiecte = add_string_by_price(lst_obiecte, 55500, " - consumabile", undo_list, redo_list)
+    add_string_by_price(lst_obiecte, 55500, " - consumabile", undo_list, redo_list)
     assert get_descriere(o1) == "electronice - altex - consumabile"
     assert get_descriere(o2) == "biblioteca - consumabile"
     assert get_descriere(o3) == "de matematica - consumabile"
